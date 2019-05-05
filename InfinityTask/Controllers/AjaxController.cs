@@ -70,19 +70,16 @@ namespace InfinityTask.Controllers
             if (!ModelState.IsValid)
             {
                  model = new NewBlog();
+
                 return PartialView("CreateBlog",model);
             }
 
-            if (model.PublishDate<DateTime.Now)
-            {
-                model = new NewBlog();
-                return PartialView("CreateBlog", model);
-            }
+          
             Blog newBlog=new Blog();
             newBlog=_mapper.Map<Blog>(model);
             
             _unitOfWork.Blog.Save(newBlog);
-            return Redirect(" / AjaxController / Index ? userId = " + model.Id);
+            return Redirect(" / AjaxController / CreateBlog ? userId = " + model.Id);
         }
     }
 }

@@ -29,7 +29,7 @@
 			<a class="UserProfile__Button__CreateBlog" id="AjaxFormButton" ajax-poziv="da" ajax-rezultat="AjaxForma" ajax-url="/Ajax/CreateBlog?Id=@Model.Id">Create new blog</a>
 		</div>
 		<div class="col-lg-6">
-			<form ajax-search="yes" ajax-result="AjaxDiv" ajax-url="/Ajax/Index">
+			<form ajax-search="yes" ajax-result="AjaxDiv" ajax-url="/Ajax/Index" ajax-rezultat="AjaxForma">
 				<div class="form-group">
 					<input type="text" class="form-control" placeholder="search" asp-for="Search" />
 					<input type="hidden" asp-for="Id" />

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using InfinityTask.Helper;
 
 namespace InfinityTask.ViewModel
 {
@@ -19,6 +20,7 @@ namespace InfinityTask.ViewModel
         [StringLength(3500)]
         public string Content { get; set; }
         [Required]
+        [DateValidation]
         public DateTime PublishDate { get; set; }
     }
 }
