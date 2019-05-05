@@ -1,0 +1,51 @@
+﻿@model InfinityTask.ViewModel.NewBlog
+
+@{
+	Layout = "Layout_Partial";
+}
+<div class="container CreateBlog__Container">
+	<div class="CreateBlog__Title col-lg-11">
+		<h3>Create/Edit Blog</h3>
+	</div>
+	<form ajax-poziv="da" ajax-rezultat="AjaxDiv" ajax-url="/Ajax/Save">
+		@Html.AntiForgeryToken()
+
+		<div class="form-group">
+			<input type="hidden" asp-for="Id" />
+			<div class="CreateBlog__DivAbove__InputTitle">
+				<div class="CreateBlog__Div__InputTitle">
+					<input type="text" class="form-control" placeholder="Title" asp-for="Title" />
+					<span asp-validation-for="Title" class="text-danger"></span>
+				</div>
+			</div>
+			<div class="CreateBlog__DivAbove__InputSummary">
+				<div class="CreateBlog__Div__InputSummary">
+					<input type="text" class="form-control" asp-for="Summary" placeholder="Summary" />
+					<span asp-validation-for="Summary" class="text-danger"></span>
+
+				</div>
+			</div>
+			<div class="CreateBlog__DivAbove__InputText">
+
+				<div class="CreateBlog__Div__InputText">
+					<textarea id="editor1" asp-for="Content"></textarea>
+					<span asp-validation-for="Content" class="text-danger"></span>
+
+				</div>
+			</div>
+			<div class="CreateBlog__DivAbove__InputDateCreation">
+
+				<div class="CreateBlog__Div__InputDateOfCreation">
+					<input type="date" class="form-control" asp-for="PublishDate" value="01.01.2000" />
+					<span asp-validation-for="PublishDate" class="text-danger"></span>
+
+				</div>
+			</div>
+			<div class="CreateBlog__Div__Buttons">
+				<button class="btn btn-danger" id="ButtonCancel" type="button">Cancel</button>
+				<button type="submit" class="btn btn-primary">Save</button>
+			</div>
+		</div>
+	</form>
+</div>
+<script type="text/javascript">CKEDITOR.replace('editor1');</script>

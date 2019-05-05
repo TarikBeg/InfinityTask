@@ -1,0 +1,44 @@
+﻿@model InfinityTask.ViewModel.LoginVM
+
+@{
+	ViewBag.Title = "Login";
+	Layout = "Layout_Partial";
+}
+<div class="container Login__Div__Container">
+	<div class="Login__Div__Title">
+
+		<h2>Login / Blog Manager</h2>
+	</div>
+	
+
+	<form asp-action="CheckLogin" asp-controller="Account" method="post">
+		<div class="col-lg-6 Login__DivAll__Form">
+			<div class="Login__DivUserName">
+				<div class="form-group form-group-lg">
+					<div class="input-group mb-3">
+						<span class="input-group-addon">
+							<i class="fas fa-envelope"></i>
+						</span>
+						<input asp-for="UserName" type="text" class="form-control " placeholder="User Name"
+						       aria-label="Default" aria-describedby="inputGroup-sizing-default"/>
+
+
+					</div>
+				</div>
+			</div>
+			<div class="form-group form-group-lg">
+
+				<div class="input-group mb-3">
+					<span class="input-group-addon">
+						<i class="fas fa-lock"></i>
+					</span>
+					<input asp-for="Password" type="password" class="form-control " placeholder="Lozinka"/>
+				</div>
+			</div>
+
+
+			<button type="submit" class="btn btn-primary btn-lg Login__ButtonSubmit">Login</button>
+		</div>
+
+	</form>
+</div>

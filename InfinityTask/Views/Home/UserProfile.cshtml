@@ -1,0 +1,44 @@
+﻿@model InfinityTask.ViewModel.UserProfileVM
+@{
+	ViewBag.Title = "User Profile";
+	Layout = "_Layout";
+}
+<div class="UserProfile__DivAbove__AjaxForm" id="DivBackground">
+	<div id="AjaxForma" class="col-lg-8 UserProfile__AjaxForm"></div>
+</div>
+<div class="col-lg-12">
+	<div class="col-lg-11 UserProfile__Div__Title">
+		<i class="fas fa-user-alt fa-5x UserProfile__UserIcon"></i>
+		<h2>@Model.FirstName @Model.LastName</h2>
+	</div>
+	<div class="col-lg-11">
+		<p class="UserProfile__P__UserDetail">User Detail</p>
+	</div>
+	<div class="col-lg-11">
+		<div class="UserProfile__Div__UserDetail">
+			<div class="UserProfile__Div__UserInfo">@Model.FirstName</div>
+			<div class="UserProfile__Div__UserInfo">@Model.LastName</div>
+			<div class="UserProfile__Div__Years">@Model.Age years</div>
+		</div>
+
+	</div>
+	<input type="hidden" asp-for="Id" />
+
+	<div class="col-lg-11 UserProfile__Div__Command">
+		<div class="col-lg-4">
+			<a class="UserProfile__Button__CreateBlog" id="AjaxFormButton" ajax-poziv="da" ajax-rezultat="AjaxForma" ajax-url="/Ajax/CreateBlog?Id=@Model.Id">Create new blog</a>
+		</div>
+		<div class="col-lg-6">
+			<form ajax-search="yes" ajax-result="AjaxDiv" ajax-url="/Ajax/Index">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="search" asp-for="Search" />
+					<input type="hidden" asp-for="Id" />
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="col-lg-7">
+		<a class="btn btn-primary" ajax-poziv="da" ajax-rezultat="AjaxDiv" ajax-url="/Ajax/Index?Id=@Model.Id">See Blogs</a>
+	</div>
+	<div id="AjaxDiv"></div>
+</div>

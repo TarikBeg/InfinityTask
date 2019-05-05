@@ -1,0 +1,55 @@
+﻿@model InfinityTask.Helper.PagedData
+@{
+	Layout = "Layout_Partial";
+}
+<table class="table table-striped">
+	<thead>
+	<tr>
+		<th>
+			Title
+		</th>
+		<th>
+			Summary
+		</th>
+		<th>
+			Publish Date Time
+		</th>
+
+	</tr>
+	</thead>
+	<tbody>
+
+	@foreach (var v in Model.List)
+	{
+		<tr>
+			<td>
+				<a id="ButtonAjaxEdit" ajax-poziv="da" ajax-url="/Ajax/CreateBlog?BlogId=@v.BlogId&Id=@Model.UserId" ajax-rezultat="AjaxForma">@v.Title</a>
+			</td>
+			<td>
+				@v.Summary
+			</td>
+			<td>
+				@v.PublishDate
+			</td>
+		</tr>
+	}
+</table>
+
+<tfoot>
+<tr>
+	<td colspan="3">
+		@for (var i = 1; i <= Model.NumberOfPages; i++)
+		{
+			if (i != Model.CurrentPage)
+			 {
+				 <a class="btn btn-primary" ajax-url="/Ajax/Index?page=@i&Id=@Model.UserId" ajax-poziv="da" ajax-rezultat="AjaxDiv">@i</a>
+			 }
+			 else
+			 {
+				 <a>@i</a>
+			 }
+		}
+
+	</td>
+</tr>
+</tfoot>
