@@ -24,7 +24,7 @@ namespace InfinityTask.Controllers
         {
             _mapper = mapper;
         }
-        //[HttpGet]
+        
         public IActionResult Index(string search, int? page)
         {
 
@@ -47,7 +47,6 @@ namespace InfinityTask.Controllers
             
             return View("Index",model);
         }
-        //[HttpPut("{userId}")]
         public IActionResult UserProfile(string userId)
         {
             var user = _unitOfWork.User.GetByID(userId);

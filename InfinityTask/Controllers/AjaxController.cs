@@ -14,6 +14,7 @@ using ReflectionIT.Mvc.Paging;
 
 namespace InfinityTask.Controllers
 {
+    [Authorize]
     public class AjaxController : Controller
     {
         private static IMapper _mapper;
