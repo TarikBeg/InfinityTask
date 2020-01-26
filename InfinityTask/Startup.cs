@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using InfinityTask.Core;
 using InfinityTask.Core.EntityModel;
 using InfinityTask.Core.IRepositories;
@@ -11,13 +7,11 @@ using InfinityTask.Persistance.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using ReflectionIT.Mvc.Paging;
 
 namespace InfinityTask
 {
@@ -48,7 +42,8 @@ namespace InfinityTask
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
 
-            services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<MyContext>().AddDefaultTokenProviders();
+            services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<MyContext>()
+                .AddDefaultTokenProviders();
 
             services.Configure<IdentityOptions>(options =>
             {
@@ -83,8 +78,8 @@ namespace InfinityTask
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Account}/{action=Login}/{id?}");
+                    "default",
+                    "{controller=Account}/{action=Login}/{id?}");
             });
         }
     }
